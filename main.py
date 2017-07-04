@@ -43,6 +43,7 @@ def hello():
     if request.method == 'GET':
         try:
             if request.args.get("hub.verify_token") == app.settings["VERIFY_TOKEN"]:
+                app.log.debug("#(green)VERIFY TOKEN: %s" % str(request.args.get("hub.verify_token")))
                 return request.args.get("hub.challenge")
             else:
                 return 'Invalid verification token'

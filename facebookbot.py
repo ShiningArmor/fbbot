@@ -9,7 +9,7 @@ class FBAgent(object):
         self.bot = Bot(self.access_token)
 
     def get_user_info(self,user_id):
-        url =  "https://graph.facebook.com/v2.6/<USER_ID>"
+        url =  "https://graph.facebook.com/v2.9/<USER_ID>"
         url += "?fields=first_name,last_name,profile_pic,locale,timezone,gender"
         url += "&access_token=<PAGE_ACCESS_TOKEN>"
         url = url.replace("<USER_ID>", user_id).replace("<PAGE_ACCESS_TOKEN>", self.access_token)
