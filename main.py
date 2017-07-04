@@ -66,7 +66,7 @@ def hello():
                         if msg['message'].get('text'):
                             message = msg['message']['text']
                             response = app.bot.ask(message)
-                            app.log.debug("#(green)fbID: %s - response: %s" % str(recipient_id), str(response))
+                            app.log.debug("#(green)fbID: %s - response: %s" % (str(recipient_id), str(response)))
                             app.facebook_agent.bot.send_text_message(recipient_id, response)
                         if msg['message'].get('attachment'):
                             app.facebook_agent.bot.send_attachment_url(recipient_id,
