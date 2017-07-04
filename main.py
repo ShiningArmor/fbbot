@@ -26,15 +26,16 @@ def get_logger(name, debug=False):
 
 
 class FlaskBot(Flask):
-    def __init__(self, name, logger):
+    def __init__(self, name):
         super(self.__class__, self).__init__(name)
+        self.log = get_logger("bot", True)
         self.settings = json.loads(open("settings.json").read())
-        self.logger = logger
         self.bot = Bot("testingBot")
         self.facebook_agent = FBAgent(self.settings)
 
-logger = get_logger("bot", True)
-app = FlaskBot(__name__, logger)
+
+
+app = FlaskBot(__name__)
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -60,7 +61,7 @@ def hello():
                 for msg in messaging:
                     if msg.get('message'):
                         recipient_id = msg['sender']['id']
-                        app.logger.debug("#(green)%s" % str(msg['message']))
+                        app.log.debug("#(green)%s" % str(msg['message']))
                         if msg['message'].get('text'):
                             message = msg['message']['text']
                             response = app.bot.ask(message)
@@ -73,7 +74,7 @@ def hello():
                         return make_response("TEST: %s " % msg["test"], 200)
             return "Success"
         except Exception, e:
-            app.logger.error(str(e))
+            app.log.error(str(e))
             return make_response("Error:\n %s\n\n" % str(e), 204)
 
 
