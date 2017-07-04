@@ -56,7 +56,7 @@ def hello():
         try:
             if output.get("log"):
                 return open("logfile.txt").read()
-
+            app.log.debug("#(green)INPUT: %s " % str(output))
             for event in output['entry']:
                 messaging = event['messaging']
                 for msg in messaging:
