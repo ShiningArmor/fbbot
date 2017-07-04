@@ -8,5 +8,5 @@ class Bot(object):
     def trainning(self):
         pass
 
-    def ask(self, ask):
-        return ask
+    def ask(self, text):
+        return text
