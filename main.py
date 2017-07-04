@@ -46,7 +46,7 @@ def hello():
                 return request.args.get("hub.challenge")
             else:
                 return 'Invalid verification token'
-        except Exception, e:
+        except Exception as e:
             return str(e)
 
     if request.method == 'POST':
