@@ -73,7 +73,7 @@ def hello():
                     else:
                         return make_response("TEST: %s " % msg["test"], 200)
             return "Success"
-        except Exception, e:
+        except Exception as e:
             app.log.error(str(e))
             return make_response("Error:\n %s\n\n" % str(e), 204)
 
