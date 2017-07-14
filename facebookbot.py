@@ -6,7 +6,7 @@ from pymessenger.bot import Bot
 class FBAgent(object):
     def __init__(self, settings):
         self.access_token = settings["ACCESS_TOKEN"]
-        self.bot = Bot(self.access_token)
+        self.bot = Bot(self.access_token, api_version=2.9)
 
     def get_user_info(self,user_id):
         url =  "https://graph.facebook.com/v2.9/<USER_ID>"
